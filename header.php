@@ -15,7 +15,7 @@ $anzu_header_dark_mode = get_theme_mod( 'anzu_header_dark_mode', '' ) ? 'anzu-da
 $navbar_theme_mode = $anzu_header_dark_mode == 'anzu-light-mode' ? 'navbar-light' : 'navbar-dark';
 $anzu_scroll_to_top_switch = get_theme_mod( 'anzu_scroll_to_top_switch', '1' );
 $anzu_notification_bar_switch = get_theme_mod( 'anzu_notification_bar_switch', '' );
-$anzu_header_general_search = get_theme_mod( 'anzu_header_general_search', '1' );
+$anzu_header_search_switch = get_theme_mod( 'anzu_header_search_switch', '1' );
 $anzu_header_general_cart = get_theme_mod( 'anzu_header_general_cart', '1' );
 
 $anzu_header_menu_position = get_theme_mod( 'anzu_header_menu_position', 'justify-content-end' );
@@ -186,7 +186,7 @@ if ( $anzu_scroll_to_top_switch ) {
 					} ?>
 
 					<!-- Header Search -->
-					<?php if ( $anzu_header_general_search ) {
+					<?php if ( $anzu_header_search_switch ) {
 						get_template_part( 'views/global-templates/header', 'search' );
 					} ?>
 

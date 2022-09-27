@@ -25,6 +25,22 @@ new \Kirki\Section(
 	]
 );
 
+new \Kirki\Section(
+	'search_section',
+	[
+		'title' => esc_html__( 'Search', 'anzu' ),
+		'panel' => 'header',
+		'tabs'  => [
+			'general' => [
+				'label' => esc_html__( 'General', 'anzu' ),
+			],
+			'design'  => [
+				'label' => esc_html__( 'Design', 'anzu' ),
+			],
+		],
+	]
+);
+
 Kirki::add_section( 'header_menu_section', array(
     'title'          => esc_html__( 'Menu', 'anzu' ),
     'panel'          => 'header',
@@ -95,16 +111,6 @@ new \Kirki\Field\Checkbox_Switch(
 	[
 		'settings'    => 'anzu_header_general_cart',
 		'label'       => esc_html__( 'Cart', 'anzu' ),
-		'section'     => 'header_general_section',
-		'default'     => true,
-		'tab'         => 'general',
-	]
-);
-
-new \Kirki\Field\Checkbox_Switch(
-	[
-		'settings'    => 'anzu_header_general_search',
-		'label'       => esc_html__( 'Search', 'anzu' ),
 		'section'     => 'header_general_section',
 		'default'     => true,
 		'tab'         => 'general',
@@ -189,6 +195,160 @@ new \Kirki\Pro\Field\Margin(
 					'mobile'  => '@media (max-width: 767px)',
 				],
 			],
+		],
+	]
+);
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  *.  header > search_section
+/*-----------------------------------------------------------------------------------*/
+
+new \Kirki\Field\Checkbox_Switch(
+	[
+		'settings'    => 'anzu_header_search_switch',
+		'label'       => esc_html__( 'Search', 'anzu' ),
+		'section'     => 'search_section',
+		'default'     => true,
+		'tab'         => 'general',
+	]
+);
+
+new \Kirki\Field\Checkbox_Switch(
+	[
+		'settings'    => 'anzu_header_search_button',
+		'label'       => esc_html__( 'Button', 'anzu' ),
+		'section'     => 'search_section',
+		'default'     => false,
+		'tab'         => 'general',
+		'active_callback' => [
+			[
+				'setting'  => 'anzu_header_search_switch',
+				'operator' => '==',
+				'value'    => true,
+			]
+		],
+	]
+);
+
+new \Kirki\Field\Select(
+	[
+		'settings'    => 'anzu_search_layout_type',
+		'label'       => esc_html__( 'Layout Style', 'anzu' ),
+		'description' => esc_html__( 'Choose the format that works best for you.', 'anzu' ),
+		'section'     => 'search_section',
+		'tab'         => 'general',
+		'default'     => 'anzu-header-search--dropdown',
+		'placeholder' => esc_html__( 'Select an option', 'anzu' ),
+		'choices'     => [
+			'anzu-header-search--default' => esc_html__( 'Default', 'anzu' ),
+			'anzu-header-search--dropdown' => esc_html__( 'Dropdown', 'anzu' ),
+		],
+		'active_callback' => [
+			[
+				'setting'  => 'anzu_header_search_switch',
+				'operator' => '==',
+				'value'    => true,
+			]
+		],
+	]
+);
+
+new \Kirki\Field\Text(
+	[
+		'settings' => 'anzu_search_placeholder',
+		'label'    => esc_html__( 'Placeholder', 'anzu' ),
+		'section'     => 'search_section',
+		'tab'         => 'general',
+		'active_callback' => [
+			[
+				'setting'  => 'anzu_header_search_switch',
+				'operator' => '==',
+				'value'    => true,
+			]
+		],
+	]
+);
+
+new \Kirki\Field\Slider(
+	[
+		'settings'    => 'anzu_header_search_size',
+		'label'       => esc_html__( 'Size', 'anzu' ),
+		'section'     => 'search_section',
+		'tab'             => 'design',
+		'default'     => '50',
+		'choices'     => [
+			'min'    => 0,
+			'max'    => 100,
+			'step'   => 1,
+			'suffix' => '%',
+		],
+		'output'          => [
+			[
+				'element'  => '.anzu-header-search.anzu-header-search--default',
+				'property' => 'width',
+				'units'    => '%',
+			],
+		],
+		'active_callback' => [
+			[
+				'setting'  => 'anzu_header_search_switch',
+				'operator' => '==',
+				'value'    => true,
+			],
+			[
+				'setting'  => 'anzu_search_layout_type',
+				'operator' => '==',
+				'value'    => 'anzu-header-search--default',
+			]
+		],
+	]
+);
+
+new \Kirki\Pro\Field\Padding(
+	[
+		'settings'        => 'anzu_header_search_padding',
+		'label'           => esc_html__( 'Padding', 'anzu' ),
+		'section'         => 'search_section',
+		'tab'             => 'design',
+		'responsive'      => true,
+		'transport'       => 'postMessage',
+		'default'         => [
+			'desktop' => [
+				'top'    => '',
+				'right'  => '',
+				'bottom' => '',
+				'left'   => '',
+			],
+			'tablet' => [
+				'top'    => '',
+				'right'  => '',
+				'bottom' => '',
+				'left'   => '',
+			],
+			'mobile' => [
+				'top'    => '',
+				'right'  => '',
+				'bottom' => '',
+				'left'   => '',
+			],
+		],
+		'output'          => [
+			[
+				'element'     => '.anzu-header-search input.field',
+				'media_query' => [
+					'desktop' => '@media (min-width: 1200px)',
+					'tablet'  => '@media (min-width: 768px)',
+					'mobile'  => '@media (max-width: 767px)',
+				],
+			],
+		],
+		'active_callback' => [
+			[
+				'setting'  => 'anzu_header_search_switch',
+				'operator' => '==',
+				'value'    => true,
+			]
 		],
 	]
 );
