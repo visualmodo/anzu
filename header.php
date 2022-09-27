@@ -16,9 +16,9 @@ $navbar_theme_mode = $anzu_header_dark_mode == 'anzu-light-mode' ? 'navbar-light
 $anzu_scroll_to_top_switch = get_theme_mod( 'anzu_scroll_to_top_switch', '1' );
 $anzu_notification_bar_switch = get_theme_mod( 'anzu_notification_bar_switch', '' );
 $anzu_header_search_switch = get_theme_mod( 'anzu_header_search_switch', '1' );
-$anzu_header_general_cart = get_theme_mod( 'anzu_header_general_cart', '1' );
+$anzu_header_cart_switch = get_theme_mod( 'anzu_header_cart_switch', '1' );
+$anzu_header_offcanvas_switch = get_theme_mod( 'anzu_header_offcanvas_switch', '' );
 
-$anzu_header_menu_position = get_theme_mod( 'anzu_header_menu_position', 'justify-content-end' );
 $anzu_transparent_header_switch = get_theme_mod( 'anzu_transparent_header_switch', '' );
 $anzu_metabox_transparent_header = ! empty ( get_post_meta( get_the_ID(), 'anzu_metabox_transparent_header', true ) ) ? get_post_meta( get_the_ID(), 'anzu_metabox_transparent_header', true ) : '';
 $anzu_layout_disable_header = ! empty ( get_post_meta( get_the_ID(), 'anzu_layout_disable_header', true ) ) ? get_post_meta( get_the_ID(), 'anzu_layout_disable_header', true ) : '';
@@ -158,44 +158,52 @@ if ( $anzu_scroll_to_top_switch ) {
 				<?php endif; ?>
 
 					<?php get_template_part( 'views/global-templates/header', 'branding' ); ?>
-						
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'anzu' ); ?>">
-						<span class="navbar-toggler-icon"></span>
-					</button>
 
-					<!-- The WordPress Menu goes here -->
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location'  => 'primary',
-							'container_class' => 'collapse navbar-collapse '.esc_attr( $anzu_header_menu_position ),
-							'container_id'    => 'navbarNavDropdown',
-							'menu_class'      => 'navbar-nav ml-auto',
-							'fallback_cb'     => '',
-							'menu_id'         => 'main-menu',
-							'depth'           => 2,
-							'walker'          => new Anzu_WP_Bootstrap_Navwalker(),
-						)
-					);
-					?>
-				<?php if ( 'container' === $container ) : ?>
+					<?php get_template_part( 'views/global-templates/header', 'menu' ); ?>
 
-					<!-- Header Cart -->
-					<?php if ( $anzu_header_general_cart ) {
-						get_template_part( 'views/global-templates/header', 'cart' );
-					} ?>
+					<div class="anzu-header-actions">
 
-					<!-- Header Search -->
-					<?php if ( $anzu_header_search_switch ) {
-						get_template_part( 'views/global-templates/header', 'search' );
-					} ?>
+						<!-- Header Search Action -->
+						<?php if ( $anzu_header_search_switch ) {
+							get_template_part( 'views/global-templates/header', 'search-action' );
+						} ?>
 
-				</div><!-- .container -->
-				<?php endif; ?>
+						<!-- Header Cart Action -->
+						<?php if ( $anzu_header_cart_switch ) {
+							get_template_part( 'views/global-templates/header', 'cart-action' );
+						} ?>
+
+						<!-- Header Offcanvas Action -->
+						<?php if ( $anzu_header_offcanvas_switch ) {
+							get_template_part( 'views/global-templates/header', 'offcanvas-action' );
+						} ?>
+
+						<!-- Header Menu Toggler -->
+						<div class="anzu-header-menu-toggler" data-bs-toggle="offcanvas" data-bs-target="#anzu-header-menu-offcanvas" aria-controls="anzu-header-menu-offcanvas">
+							<i class="bi bi-list"></i>
+							<span class="visually-hidden-focusable"><?php esc_html_e( 'Menu', 'anzu' ); ?></span>
+						</div>
+
+					</div>
 
 			</nav><!-- .site-navigation -->
 
+			<!-- Header Search Content -->
+			<?php if ( $anzu_header_search_switch ) {
+				get_template_part( 'views/global-templates/header', 'search' );
+			} ?>
+
 		</header><!-- #wrapper-navbar end -->
+
+		<!-- Header Offcanvas Content -->
+		<?php if ( $anzu_header_offcanvas_switch ) { 
+			get_template_part( 'views/global-templates/header', 'offcanvas' );
+		} ?>
+
+		<!-- Header Cart Content -->
+		<?php if ( $anzu_header_cart_switch ) { 
+			get_template_part( 'views/global-templates/header', 'cart' );
+		} ?>
 
 		<?php do_action( 'anzu_hook_after_header' ); ?>
 

@@ -51,6 +51,23 @@ if ( ! function_exists( 'anzu_widgets_init' ) ) {
 		$above_footer_widgets_switch = get_theme_mod( 'above_footer_widgets_switch', '' );
 		$main_footer_widgets_switch = get_theme_mod( 'main_footer_widgets_switch', '' );
 		$below_footer_widgets_switch = get_theme_mod( 'below_footer_widgets_switch', '' );
+		$anzu_header_offcanvas_switch = get_theme_mod( 'anzu_header_offcanvas_switch', '' );
+
+		if ( $anzu_header_offcanvas_switch ) {
+
+			register_sidebar(
+				array(
+					'name'          => __( 'Offcanvas', 'anzu' ),
+					'id'            => 'offcanvas',
+					'description'   => __( 'Offcanvas widget area', 'anzu' ),
+					'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</aside>',
+					'before_title'  => '<h2 class="widget-title">',
+					'after_title'   => '</h2>',
+				)
+			);
+
+		}
 
 		if ( $above_footer_widgets_switch == '1' ) {
 

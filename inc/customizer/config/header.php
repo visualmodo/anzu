@@ -63,6 +63,22 @@ new \Kirki\Section(
 	]
 );
 
+new \Kirki\Section(
+	'header_offcanvas_section',
+	[
+		'title' => esc_html__( 'Offcanvas', 'anzu' ),
+		'panel' => 'header',
+		'tabs'  => [
+			'general' => [
+				'label' => esc_html__( 'General', 'anzu' ),
+			],
+			'design'  => [
+				'label' => esc_html__( 'Design', 'anzu' ),
+			],
+		],
+	]
+);
+
 Kirki::add_section( 'header_hero_section', array(
     'title'          => esc_html__( 'Hero', 'anzu' ),
 	'panel'          => 'header',
@@ -109,7 +125,7 @@ if ( is_object( $anzu_license ) && $anzu_license->get_api_key_status() ) {
 
 new \Kirki\Field\Checkbox_Switch(
 	[
-		'settings'    => 'anzu_header_general_cart',
+		'settings'    => 'anzu_header_cart_switch',
 		'label'       => esc_html__( 'Cart', 'anzu' ),
 		'section'     => 'header_general_section',
 		'default'     => true,
@@ -238,11 +254,11 @@ new \Kirki\Field\Select(
 		'description' => esc_html__( 'Choose the format that works best for you.', 'anzu' ),
 		'section'     => 'search_section',
 		'tab'         => 'general',
-		'default'     => 'anzu-header-search--dropdown',
+		'default'     => 'anzu-header-search--collapse',
 		'placeholder' => esc_html__( 'Select an option', 'anzu' ),
 		'choices'     => [
 			'anzu-header-search--default' => esc_html__( 'Default', 'anzu' ),
-			'anzu-header-search--dropdown' => esc_html__( 'Dropdown', 'anzu' ),
+			'anzu-header-search--collapse' => esc_html__( 'Collapse', 'anzu' ),
 		],
 		'active_callback' => [
 			[
@@ -346,6 +362,38 @@ new \Kirki\Pro\Field\Padding(
 		'active_callback' => [
 			[
 				'setting'  => 'anzu_header_search_switch',
+				'operator' => '==',
+				'value'    => true,
+			]
+		],
+	]
+);
+
+
+/*-----------------------------------------------------------------------------------*/
+/*  *.  header > header_offcanvas_section
+/*-----------------------------------------------------------------------------------*/
+
+new \Kirki\Field\Checkbox_Switch(
+	[
+		'settings'    => 'anzu_header_offcanvas_switch',
+		'label'       => esc_html__( 'Offcanvas', 'anzu' ),
+		'section'     => 'header_offcanvas_section',
+		'tab'         => 'general',
+		'default'     => false,
+	]
+);
+
+new \Kirki\Field\Checkbox_Switch(
+	[
+		'settings'    => 'anzu_header_offcanvas_dark_mode',
+		'label'       => esc_html__( 'Dark Mode', 'anzu' ),
+		'section'     => 'header_offcanvas_section',
+		'tab'         => 'design',
+		'default'     => false,
+		'active_callback' => [
+			[
+				'setting'  => 'anzu_header_offcanvas_switch',
 				'operator' => '==',
 				'value'    => true,
 			]

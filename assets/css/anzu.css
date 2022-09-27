@@ -20777,16 +20777,44 @@ article.post .entry-footer span:last-child {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*  *.  Header Cart
+/*  *.  Header Menu
 /*-----------------------------------------------------------------------------------*/
-.anzu-header-cart {
-  cursor: pointer;
-  padding: 0 0.5rem;
-}
-.anzu-header-cart .dropdown-toggle:after {
+.desktop-device .anzu-header-menu-toggler {
   display: none;
 }
 
+/*-----------------------------------------------------------------------------------*/
+/*  *.  Header Search
+/*-----------------------------------------------------------------------------------*/
+.anzu-header-actions {
+  display: flex;
+  align-items: center;
+}
+.anzu-header-actions i {
+  font-size: 1.25rem;
+}
+.anzu-header-actions .anzu-header-menu-toggler i {
+  font-size: 2rem;
+}
+.anzu-header-actions > * {
+  cursor: pointer;
+}
+.anzu-header-actions > *:hover {
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+.anzu-header-actions > *:not(:last-child) {
+  padding: 0 0.25rem;
+  margin: 0 0.25rem;
+}
+.anzu-header-actions > *:last-child {
+  padding: 0 0 0 0.25rem;
+  margin: 0 0 0 0.25rem;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*  *.  Header Cart
+/*-----------------------------------------------------------------------------------*/
 body:not(.woocommerce-page) .widget_shopping_cart_content {
   display: flex;
   flex-flow: column;
@@ -20831,12 +20859,15 @@ body:not(.woocommerce-page) .widget_shopping_cart_content .woocommerce-mini-cart
 /*-----------------------------------------------------------------------------------*/
 /*  *.  Header Search
 /*-----------------------------------------------------------------------------------*/
-.anzu-header-search {
-  cursor: pointer;
-  padding: 0 0.5rem;
-}
 .anzu-header-search .dropdown-toggle:after {
   display: none;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*  *.  Header Search
+/*-----------------------------------------------------------------------------------*/
+.admin-bar .offcanvas.offcanvas-start, .admin-bar .offcanvas.offcanvas-end, .admin-bar .offcanvas.offcanvas-top {
+  top: var(--wp-admin--admin-bar--height) !important;
 }
 
 /*-----------------------------------------------------------------------------------*/
