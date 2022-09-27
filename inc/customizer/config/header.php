@@ -450,6 +450,16 @@ new \Kirki\Field\Select(
 	]
 );
 
+new \Kirki\Field\Checkbox_Switch(
+	[
+		'settings'    => 'anzu_header_menu_collapsed',
+		'label'       => esc_html__( 'Collapsed', 'anzu' ),
+		'description' => esc_html__( 'The menu starts collapsed.', 'anzu' ),
+		'section'     => 'header_menu_section',
+		'default'     => false,
+	]
+);
+
 
 /*-----------------------------------------------------------------------------------*/
 /*  *.  header > header_notification_section

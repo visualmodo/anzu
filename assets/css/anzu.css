@@ -20659,15 +20659,16 @@ nav#main-nav {
 /*-----------------------------------------------------------------------------------*/
 /*  *.  Dropdown Submenu - Make the Bootstrap Navbar Dropdown Work on Hover
 /*-----------------------------------------------------------------------------------*/
-@media (min-width: 768px) {
-  .navbar-nav .nav-item .dropdown-menu {
-    display: none;
-    margin-top: 0;
-  }
-  .navbar-nav .nav-item:hover .dropdown-menu {
-    display: block;
-  }
+.theme-anzu.layout-xl .navbar-nav .nav-item .dropdown-menu,
+.theme-anzu.layout-lg .navbar-nav .nav-item .dropdown-menu {
+  display: none;
+  margin-top: 0;
 }
+.theme-anzu.layout-xl .navbar-nav .nav-item:hover .dropdown-menu,
+.theme-anzu.layout-lg .navbar-nav .nav-item:hover .dropdown-menu {
+  display: block;
+}
+
 .menu-item-has-children > .nav-link:after {
   content: "\f282";
   display: inline-block;
@@ -20779,7 +20780,7 @@ article.post .entry-footer span:last-child {
 /*-----------------------------------------------------------------------------------*/
 /*  *.  Header Menu
 /*-----------------------------------------------------------------------------------*/
-.desktop-device .anzu-header-menu-toggler {
+.theme-anzu.layout-xl .navbar-expand-lg .anzu-header-menu-toggler {
   display: none;
 }
 

@@ -18,6 +18,7 @@ $anzu_notification_bar_switch = get_theme_mod( 'anzu_notification_bar_switch', '
 $anzu_header_search_switch = get_theme_mod( 'anzu_header_search_switch', '1' );
 $anzu_header_cart_switch = get_theme_mod( 'anzu_header_cart_switch', '1' );
 $anzu_header_offcanvas_switch = get_theme_mod( 'anzu_header_offcanvas_switch', '' );
+$anzu_header_menu_collapsed = get_theme_mod( 'anzu_header_menu_collapsed', '' );
 
 $anzu_transparent_header_switch = get_theme_mod( 'anzu_transparent_header_switch', '' );
 $anzu_metabox_transparent_header = ! empty ( get_post_meta( get_the_ID(), 'anzu_metabox_transparent_header', true ) ) ? get_post_meta( get_the_ID(), 'anzu_metabox_transparent_header', true ) : '';
@@ -147,7 +148,7 @@ if ( $anzu_scroll_to_top_switch ) {
 
 			<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'anzu' ); ?></a>
 
-			<nav id="main-nav" class="navbar navbar-expand-md <?php echo esc_attr( $navbar_theme_mode ); ?>" aria-labelledby="main-nav-label">
+			<nav id="main-nav" class="navbar <?php if ( !$anzu_header_menu_collapsed ) { echo 'navbar-expand-lg'; } ?> <?php echo esc_attr( $navbar_theme_mode ); ?>" aria-labelledby="main-nav-label">
 
 				<h2 id="main-nav-label" class="visually-hidden-focusable">
 					<?php esc_html_e( 'Main Navigation', 'anzu' ); ?>
