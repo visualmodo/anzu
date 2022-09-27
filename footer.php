@@ -10,11 +10,7 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-$anzu_layout_disable_footer = ! empty ( get_post_meta( get_the_ID(), 'anzu_layout_disable_footer', true ) ) ? get_post_meta( get_the_ID(), 'anzu_layout_disable_footer', true ) : '';
-
-if ($anzu_layout_disable_footer != '1') { 
-
-$container = get_theme_mod( 'anzu_container', 'container' );
+$container = get_theme_mod( 'anzu_layout_type', 'container' );
 
 $anzu_footer_dark_mode = get_theme_mod( 'anzu_footer_dark_mode', '1' ) ? 'anzu-dark-mode' : 'anzu-light-mode';
 
@@ -22,64 +18,62 @@ $anzu_title_switch = get_theme_mod( 'anzu_title_switch', '' );
 
 $anzu_copyright_switch = get_theme_mod( 'anzu_copyright_switch', '1' );
 
-	/**
-	 * Footer Copyright
-	 */
-	function anzu_footer_copyright() {
+/**
+ * Footer Copyright
+ */
+function anzu_footer_copyright() {
 
-		$theme_author = anzu_get_theme_author_details();
+	$theme_author = anzu_get_theme_author_details();
 
-		$anzu_copyright = get_theme_mod( 'anzu_copyright', 'Copyright [anzu_copyright] [anzu_current_year] [anzu_site_title] | Powered by [anzu_theme_author]' );
-		
-		if ( $anzu_copyright || is_customize_preview() ) {
-			echo '<div id="site-info__copyright">';
-				$anzu_copyright = str_replace( '[anzu_copyright]', '&copy;', $anzu_copyright );
-				$anzu_copyright = str_replace( '[anzu_current_year]', gmdate( 'Y' ), $anzu_copyright );
-				$anzu_copyright = str_replace( '[anzu_site_title]', get_bloginfo( 'name' ), $anzu_copyright );
-				$anzu_copyright = str_replace( '[anzu_theme_author]', '<a href=" ' . esc_url( $theme_author['anzu_theme_author_url'] ) . '" target="_blank">' . $theme_author['anzu_theme_name'] . '</a>', $anzu_copyright );
-					echo do_shortcode( wpautop( $anzu_copyright ) );
-			echo '</div>';
-		}
-
+	$anzu_copyright = get_theme_mod( 'anzu_copyright', 'Copyright [anzu_copyright] [anzu_current_year] [anzu_site_title] | Powered by [anzu_theme_author]' );
+	
+	if ( $anzu_copyright || is_customize_preview() ) {
+		echo '<div id="site-info__copyright">';
+			$anzu_copyright = str_replace( '[anzu_copyright]', '&copy;', $anzu_copyright );
+			$anzu_copyright = str_replace( '[anzu_current_year]', gmdate( 'Y' ), $anzu_copyright );
+			$anzu_copyright = str_replace( '[anzu_site_title]', get_bloginfo( 'name' ), $anzu_copyright );
+			$anzu_copyright = str_replace( '[anzu_theme_author]', '<a href=" ' . esc_url( $theme_author['anzu_theme_author_url'] ) . '" target="_blank">' . $theme_author['anzu_theme_name'] . '</a>', $anzu_copyright );
+				echo do_shortcode( wpautop( $anzu_copyright ) );
+		echo '</div>';
 	}
 
-	?>
+}
 
-	<footer id="anzu-footer" class="<?php echo esc_attr( $anzu_footer_dark_mode ); ?>" id="colophon">
+?>
 
-		<?php get_template_part( 'views/sidebar-templates/sidebar', 'footer' ); ?>
+<footer id="anzu-footer" class="<?php echo esc_attr( $anzu_footer_dark_mode ); ?>" id="colophon">
 
-		<?php if ( $anzu_title_switch != '' || $anzu_copyright_switch != '' ) { ?>
+	<?php get_template_part( 'views/sidebar-templates/sidebar', 'footer' ); ?>
 
-			<?php $site_info_align = $anzu_title_switch != '1' || $anzu_copyright_switch !='1' ? 'justify-content-center' :  'justify-content-between'; ?>
+	<?php if ( $anzu_title_switch != '' || $anzu_copyright_switch != '' ) { ?>
 
-			<div id="anzu-footer__bottom" class="<?php echo esc_attr( $container ); ?>">
+		<?php $site_info_align = $anzu_title_switch != '1' || $anzu_copyright_switch !='1' ? 'justify-content-center' :  'justify-content-between'; ?>
 
-				<div class="row">
+		<div id="anzu-footer__bottom" class="<?php echo esc_attr( $container ); ?>">
 
-					<div id="site-info" class="col-md <?php echo $site_info_align; ?>">
+			<div class="row">
 
-						<?php if ( $anzu_title_switch == '1' ) { ?>
-							<div id="site-info__site-name">
-								<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php esc_html(bloginfo( 'name' )); ?></a>  
-							</div>
-						<?php } ?>
-						
-						<?php if ( $anzu_copyright_switch == '1' ) {
-							anzu_footer_copyright();
-						} ?>
+				<div id="site-info" class="col-md <?php echo $site_info_align; ?>">
 
-					</div><!--col end -->
+					<?php if ( $anzu_title_switch == '1' ) { ?>
+						<div id="site-info__site-name">
+							<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php esc_html(bloginfo( 'name' )); ?></a>  
+						</div>
+					<?php } ?>
+					
+					<?php if ( $anzu_copyright_switch == '1' ) {
+						anzu_footer_copyright();
+					} ?>
 
-				</div><!-- row end -->
+				</div><!--col end -->
 
-			</div><!-- container end -->
+			</div><!-- row end -->
 
-		<?php } ?>
+		</div><!-- container end -->
 
-	</footer><!-- wrapper end -->
+	<?php } ?>
 
-<?php } ?><!-- Disable Footer -->
+</footer><!-- wrapper end -->
 
 </div><!-- #page we need this extra closing tag here -->
 
