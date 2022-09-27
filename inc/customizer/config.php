@@ -667,6 +667,12 @@ Kirki::add_section( 'typography_body', array(
     'priority'       => 160,
 ) );
 
+Kirki::add_section( 'typography_headings', array(
+    'title'          => esc_html__( 'All Headings', 'anzu' ),
+    'panel'          => 'typography',
+    'priority'       => 160,
+) );
+
 Kirki::add_section( 'typography_h1', array(
     'title'          => esc_html__( 'Heading 1 - H1', 'anzu' ),
     'panel'          => 'typography',
@@ -699,6 +705,18 @@ Kirki::add_section( 'typography_h5', array(
 
 Kirki::add_section( 'typography_h6', array(
     'title'          => esc_html__( 'Heading 6 - H6', 'anzu' ),
+    'panel'          => 'typography',
+    'priority'       => 160,
+) );
+
+Kirki::add_section( 'typography_menu', array(
+    'title'          => esc_html__( 'Menu', 'anzu' ),
+    'panel'          => 'typography',
+    'priority'       => 160,
+) );
+
+Kirki::add_section( 'typography_dropdown_menu', array(
+    'title'          => esc_html__( 'Menu - Dropdown', 'anzu' ),
     'panel'          => 'typography',
     'priority'       => 160,
 ) );
@@ -1633,6 +1651,27 @@ new \Kirki\Field\Typography(
 
 new \Kirki\Field\Typography(
 	[
+		'settings'    => 'anzu_typography_headings',
+		'label'       => esc_html__( 'All Headings', 'anzu' ),
+		'description' => esc_html__( 'These settings control the typography for all Headings.', 'anzu' ),
+		'section'     => 'typography_headings',
+		'priority'    => 10,
+		'transport'   => 'auto',
+		'default'     => [
+			'font-family'     => '',
+			'variant'         => '',
+			'text-transform'  => '',
+		],
+		'output'      => [
+			[
+				'element' => [ 'h1, h2, h3, h4, h5, h6' ],
+			],
+		],
+	]
+);
+
+new \Kirki\Field\Typography(
+	[
 		'settings'    => 'anzu_typography_heading_1',
 		'label'       => esc_html__( 'Heading 1', 'anzu' ),
 		'description' => esc_html__( 'These settings control the typography for all H1 headers.', 'anzu' ),
@@ -1794,6 +1833,62 @@ new \Kirki\Field\Typography(
 		'output'      => [
 			[
 				'element' => [ 'h6' ],
+			],
+		],
+	]
+);
+
+new \Kirki\Field\Typography(
+	[
+		'settings'    => 'anzu_typography_menu',
+		'label'       => esc_html__( 'Menu', 'anzu' ),
+		'description' => esc_html__( 'These settings control the typography for all Menus.', 'anzu' ),
+		'section'     => 'typography_menu',
+		'priority'    => 10,
+		'transport'   => 'auto',
+		'default'     => [
+			'font-family'     => '',
+			'variant'         => '',
+			'font-size'       => '',
+			'font-style'      => '',
+			'line-height'     => '',
+			'letter-spacing'  => '',
+			'text-transform'  => '',
+			'text-decoration' => '',
+			'margin-top'      => '',
+			'margin-bottom'   => '',
+		],
+		'output'      => [
+			[
+				'element' => [ '.navbar-nav li a.nav-link' ],
+			],
+		],
+	]
+);
+
+new \Kirki\Field\Typography(
+	[
+		'settings'    => 'anzu_typography_dropdown_menu',
+		'label'       => esc_html__( 'Menu - Dropdown', 'anzu' ),
+		'description' => esc_html__( 'These settings control the typography for all Dropdown Menu.', 'anzu' ),
+		'section'     => 'typography_dropdown_menu',
+		'priority'    => 10,
+		'transport'   => 'auto',
+		'default'     => [
+			'font-family'     => '',
+			'variant'         => '',
+			'font-size'       => '',
+			'font-style'      => '',
+			'line-height'     => '',
+			'letter-spacing'  => '',
+			'text-transform'  => '',
+			'text-decoration' => '',
+			'margin-top'      => '',
+			'margin-bottom'   => '',
+		],
+		'output'      => [
+			[
+				'element' => [ '.dropdown-menu li a.dropdown-item' ],
 			],
 		],
 	]
