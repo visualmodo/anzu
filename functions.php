@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 
 // Core Constants.
-define( 'ANZU_THEME_VERSION', '1.0.5' );
+define( 'ANZU_THEME_VERSION', '1.0.6' );
 define( 'ANZU_THEME_DIR', trailingslashit( get_template_directory() ) );
 define( 'ANZU_THEME_URI', trailingslashit( esc_url( get_template_directory_uri() ) ) );
 
@@ -112,6 +112,11 @@ if ( class_exists( 'WooCommerce' ) ) {
 // Load Jetpack compatibility file if Jetpack is activiated.
 if ( class_exists( 'Jetpack' ) ) {
 	$anzu_includes[] = '/inc/jetpack.php';
+}
+
+// Live Search.
+if ( get_theme_mod( 'anzu_header_live_search_switch' ) ) {
+	$anzu_includes[] = '/inc/live-search.php';
 }
 
 // Include files.

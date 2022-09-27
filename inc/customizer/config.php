@@ -27,6 +27,7 @@ require_once __DIR__ . '/config/general-options.php';// phpcs:ignore WPThemeRevi
 require_once __DIR__ . '/config/header.php';// phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/config/colors.php';// phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/config/typography.php';// phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
+require_once __DIR__ . '/config/translate.php';// phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/config/footer.php';// phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/config/hooks.php';// phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude
 require_once __DIR__ . '/config/scroll-to-top.php';// phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude

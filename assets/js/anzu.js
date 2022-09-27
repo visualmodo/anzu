@@ -7245,6 +7245,25 @@
 	      }
 	    }
 	  }
+	  /* ==================================================
+	  Header Search
+	  ================================================== */
+	  // Sync All Header Search Inputs
+
+
+	  $('input.anzu-header-search-form-input').on('input keyup paste', function () {
+	    $('input.anzu-header-search-form-input').not(this).val($(this).val());
+	  }); // Live Search Results
+
+	  if ($('.anzu-header-live-search').hasClass('anzu-header-live-search--data-fetch')) {
+	    $("input.anzu-header-search-form-input").keyup(function () {
+	      if ($(this).val().length > 2) {
+	        $(".anzu-header-live-search--data-fetch").show();
+	      } else {
+	        $(".anzu-header-live-search--data-fetch").hide();
+	      }
+	    });
+	  }
 	});
 
 }));

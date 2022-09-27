@@ -232,6 +232,51 @@ new \Kirki\Field\Checkbox_Switch(
 
 new \Kirki\Field\Checkbox_Switch(
 	[
+		'settings'    => 'anzu_header_live_search_switch',
+		'label'       => esc_html__( 'Live Search', 'anzu' ),
+		'section'     => 'search_section',
+		'default'     => true,
+		'tab'         => 'general',
+		'active_callback' => [
+			[
+				'setting'  => 'anzu_header_search_switch',
+				'operator' => '==',
+				'value'    => true,
+			]
+		],
+	]
+);
+
+add_action( 'init', 'anzu_header_search_post_types_function', 12 );
+
+function anzu_header_search_post_types_function() {
+
+new \Kirki\Field\Select(
+	[
+		'settings'    => 'anzu_header_search_post_types',
+		'label'       => esc_html__( 'Post Types', 'anzu' ),
+		'description' => esc_html__( 'The default is Posts and Pages.', 'anzu' ),
+		'section'     => 'search_section',
+		'default'     => '',
+		'tab'         => 'general',
+		'priority'    => 10,
+		'multiple'    => 10,
+		'placeholder' => esc_html__( 'Choose an option', 'anzu' ),
+		'choices'     => Kirki_Helper::get_post_types(),
+		'active_callback' => [
+			[
+				'setting'  => 'anzu_header_search_switch',
+				'operator' => '==',
+				'value'    => true,
+			]
+		],
+	]
+);
+
+}
+
+new \Kirki\Field\Checkbox_Switch(
+	[
 		'settings'    => 'anzu_header_search_button',
 		'label'       => esc_html__( 'Button', 'anzu' ),
 		'section'     => 'search_section',
@@ -260,22 +305,6 @@ new \Kirki\Field\Select(
 			'anzu-header-search--default' => esc_html__( 'Default', 'anzu' ),
 			'anzu-header-search--collapse' => esc_html__( 'Collapse', 'anzu' ),
 		],
-		'active_callback' => [
-			[
-				'setting'  => 'anzu_header_search_switch',
-				'operator' => '==',
-				'value'    => true,
-			]
-		],
-	]
-);
-
-new \Kirki\Field\Text(
-	[
-		'settings' => 'anzu_search_placeholder',
-		'label'    => esc_html__( 'Placeholder', 'anzu' ),
-		'section'     => 'search_section',
-		'tab'         => 'general',
 		'active_callback' => [
 			[
 				'setting'  => 'anzu_header_search_switch',

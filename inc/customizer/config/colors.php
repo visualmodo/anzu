@@ -94,9 +94,6 @@ new \Kirki\Field\Color(
 				'element'  => '
 				.anzu-primary-color--color, 
 				.anzu-light-mode a.anzu-brand__title,
-				.anzu-light-mode #main-menu .nav-item.active .nav-link, 
-				.anzu-light-mode #main-menu .nav-item:not(.active):hover > .nav-link, 
-				.anzu-light-mode #main-menu .dropdown .dropdown-item:hover, 
 				.anzu-light-mode article.post .entry-title a:hover',
 				'property' => 'color',
 			),
@@ -216,58 +213,75 @@ new \Kirki\Field\Color(
 	]
 );
 
-new \Kirki\Field\Color(
+new \Kirki\Field\Multicolor(
 	[
 		'settings'    => 'anzu_light_colors_link_color',
 		'label'       => __( 'Link', 'anzu' ),
 		'description' => esc_html__( 'It will apply to all the links.', 'anzu' ),
-		'section'     => 'light_colors_section',
-		'default'     => '#0000FF',
-		'choices'     => [
-			'alpha' => true,
+		'section'   => 'light_colors_section',
+		'choices'   => [
+			'link'     => esc_html__( 'Color', 'anzu' ),
+			'hover'    => esc_html__( 'Hover', 'anzu' ),
+			'active'   => esc_html__( 'Active', 'anzu' ),
 		],
-		'output' => array(
+		'alpha'     => true,
+		'default'   => [
+			'link'   => '#0000FF',
+			'hover'  => '#0D4DFF',
+			'active' => '#0D8CFF',
+		],
+		'output'    => array(
 			array(
-				'element'  => '.anzu-light-mode a:not(.btn)',
-				'property' => 'color',
+			  'choice'   => 'link',
+			  'element'  => '.anzu-light-mode a:not(.btn)',
+			  'property' => 'color',
+			),
+			array(
+			  'choice'   => 'hover',
+			  'element'  => '.anzu-light-mode a:hover:not(.btn)',
+			  'property' => 'color',
+			),
+			array(
+			  'choice'   => 'active',
+			  'element'  => '.anzu-light-mode a:active:not(.btn)',
+			  'property' => 'color',
 			),
 		),
 	]
 );
 
-new \Kirki\Field\Color(
+new \Kirki\Field\Multicolor(
 	[
-		'settings'    => 'anzu_light_colors_link_hover_color',
-		'label'       => __( 'Link Hover', 'anzu' ),
-		'description' => esc_html__( 'It will apply to all the links.', 'anzu' ),
-		'section'     => 'light_colors_section',
-		'default'     => '#0D4DFF',
-		'choices'     => [
-			'alpha' => true,
+		'settings'    => 'anzu_light_colors_text_menu_color',
+		'label'       => __( 'Text Menu', 'anzu' ),
+		'description' => esc_html__( 'It will apply to all the menu texts and links.', 'anzu' ),
+		'section'   => 'light_colors_section',
+		'choices'   => [
+			'link'     => esc_html__( 'Color', 'anzu' ),
+			'hover'    => esc_html__( 'Hover', 'anzu' ),
+			'active'   => esc_html__( 'Active', 'anzu' ),
 		],
-		'output' => array(
+		'alpha'     => true,
+		'default'   => [
+			'link'   => '#737373',
+			'hover'  => '#4c4c4c',
+			'active' => '#000000',
+		],
+		'output'    => array(
 			array(
-				'element'  => '.anzu-light-mode a:hover:not(.btn)',
-				'property' => 'color',
+			  'choice'   => 'link',
+			  'element'  => '.anzu-light-mode #main-menu .nav-item a',
+			  'property' => 'color',
 			),
-		),
-	]
-);
-
-new \Kirki\Field\Color(
-	[
-		'settings'    => 'anzu_light_colors_link_active_color',
-		'label'       => __( 'Link Active', 'anzu' ),
-		'description' => esc_html__( 'It will apply to all the links.', 'anzu' ),
-		'section'     => 'light_colors_section',
-		'default'     => '#0D8CFF',
-		'choices'     => [
-			'alpha' => true,
-		],
-		'output' => array(
 			array(
-				'element'  => '.anzu-light-mode a:active:not(.btn)',
-				'property' => 'color',
+			  'choice'   => 'hover',
+			  'element'  => '.anzu-light-mode #main-menu .nav-item a:hover, .anzu-light-mode #main-menu .nav-item a:focus',
+			  'property' => 'color',
+			),
+			array(
+			  'choice'   => 'active',
+			  'element'  => '.anzu-light-mode #main-menu .nav-item a:active, .anzu-light-mode #main-menu .active a',
+			  'property' => 'color',
 			),
 		),
 	]
@@ -369,9 +383,6 @@ new \Kirki\Field\Color(
 				'element'  => '
 				.anzu-primary-color--color, 
 				.anzu-dark-mode a.anzu-brand__url,
-				.anzu-dark-mode #main-menu .nav-item.active .nav-link, 
-				.anzu-dark-mode #main-menu .nav-item:not(.active):hover > .nav-link, 
-				.anzu-dark-mode #main-menu .dropdown .dropdown-item:hover, 
 				.anzu-dark-mode article.post .entry-title a:hover',
 				'property' => 'color',
 			),
@@ -487,58 +498,75 @@ new \Kirki\Field\Color(
 	]
 );
 
-new \Kirki\Field\Color(
+new \Kirki\Field\Multicolor(
 	[
 		'settings'    => 'anzu_dark_colors_link_color',
 		'label'       => __( 'Link', 'anzu' ),
 		'description' => esc_html__( 'It will apply to all the links.', 'anzu' ),
-		'section'     => 'dark_colors_section',
-		'default'     => '#0000FF',
-		'choices'     => [
-			'alpha' => true,
+		'section'   => 'dark_colors_section',
+		'choices'   => [
+			'link'     => esc_html__( 'Color', 'anzu' ),
+			'hover'    => esc_html__( 'Hover', 'anzu' ),
+			'active'   => esc_html__( 'Active', 'anzu' ),
 		],
-		'output' => array(
+		'alpha'     => true,
+		'default'   => [
+			'link'   => '#0000FF',
+			'hover'  => '#0D4DFF',
+			'active' => '#0D8CFF',
+		],
+		'output'    => array(
 			array(
-				'element'  => '.anzu-dark-mode a:not(.btn)',
-				'property' => 'color',
+			  'choice'   => 'link',
+			  'element'  => '.anzu-dark-mode a:not(.btn)',
+			  'property' => 'color',
+			),
+			array(
+			  'choice'   => 'hover',
+			  'element'  => '.anzu-dark-mode a:hover:not(.btn)',
+			  'property' => 'color',
+			),
+			array(
+			  'choice'   => 'active',
+			  'element'  => '.anzu-dark-mode a:active:not(.btn)',
+			  'property' => 'color',
 			),
 		),
 	]
 );
 
-new \Kirki\Field\Color(
+new \Kirki\Field\Multicolor(
 	[
-		'settings'    => 'anzu_dark_colors_link_hover_color',
-		'label'       => __( 'Link Hover', 'anzu' ),
-		'description' => esc_html__( 'It will apply to all the links.', 'anzu' ),
-		'section'     => 'dark_colors_section',
-		'default'     => '#0D4DFF',
-		'choices'     => [
-			'alpha' => true,
+		'settings'    => 'anzu_dark_colors_text_menu_color',
+		'label'       => __( 'Text Menu', 'anzu' ),
+		'description' => esc_html__( 'It will apply to all the menu texts and links.', 'anzu' ),
+		'section'   => 'dark_colors_section',
+		'choices'   => [
+			'link'     => esc_html__( 'Color', 'anzu' ),
+			'hover'    => esc_html__( 'Hover', 'anzu' ),
+			'active'   => esc_html__( 'Active', 'anzu' ),
 		],
-		'output' => array(
+		'alpha'     => true,
+		'default'   => [
+			'link'   => '#9b9d9e',
+			'hover'  => '#6c757d',
+			'active' => '#FFFFFF',
+		],
+		'output'    => array(
 			array(
-				'element'  => '.anzu-dark-mode a:hover:not(.btn)',
-				'property' => 'color',
+			  'choice'   => 'link',
+			  'element'  => '.anzu-dark-mode #main-menu .nav-item a',
+			  'property' => 'color',
 			),
-		),
-	]
-);
-
-new \Kirki\Field\Color(
-	[
-		'settings'    => 'anzu_dark_colors_link_active_color',
-		'label'       => __( 'Link Active', 'anzu' ),
-		'description' => esc_html__( 'It will apply to all the links.', 'anzu' ),
-		'section'     => 'dark_colors_section',
-		'default'     => '#0D8CFF',
-		'choices'     => [
-			'alpha' => true,
-		],
-		'output' => array(
 			array(
-				'element'  => '.anzu-dark-mode a:active:not(.btn)',
-				'property' => 'color',
+			  'choice'   => 'hover',
+			  'element'  => '.anzu-dark-mode #main-menu .nav-item a:hover, .anzu-light-mode #main-menu .nav-item a:focus',
+			  'property' => 'color',
+			),
+			array(
+			  'choice'   => 'active',
+			  'element'  => '.anzu-dark-mode #main-menu .nav-item a:active, .anzu-dark-mode #main-menu .active a',
+			  'property' => 'color',
 			),
 		),
 	]

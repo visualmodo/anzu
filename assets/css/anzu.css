@@ -20863,6 +20863,45 @@ body:not(.woocommerce-page) .widget_shopping_cart_content .woocommerce-mini-cart
   display: none;
 }
 
+.desktop-device .anzu-header-search--default .anzu-header-search-collapse-action,
+.desktop-device .anzu-header-search--default .anzu-header-search-collapse-form {
+  display: none;
+}
+
+.mobile-device .anzu-header-search--default .anzu-header-search-form {
+  display: none;
+}
+
+.anzu-header-live-search {
+  display: none;
+}
+.anzu-header-live-search-results {
+  display: flex;
+  flex-direction: column;
+}
+.anzu-header-live-search-result {
+  padding: 1rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+.anzu-header-live-search-result:hover {
+  background-color: #f1f1f1;
+}
+
+.anzu-dark-mode .anzu-header-search-form-input {
+  color: #fff;
+  border-color: #6c757d;
+  background-color: transparent;
+}
+.anzu-dark-mode .anzu-header-search-form-input:hover, .anzu-dark-mode .anzu-header-search-form-input:active {
+  border-color: #fff;
+}
+.anzu-dark-mode .anzu-header-live-search-result {
+  border-bottom: 1px solid #1f1f1f;
+}
+.anzu-dark-mode .anzu-header-live-search-result:hover {
+  background-color: #1f1f1f;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*  *.  Header Search
 /*-----------------------------------------------------------------------------------*/
